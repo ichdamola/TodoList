@@ -1,15 +1,22 @@
-import graphene
-from .models import Project, Task
+from graphene import ObjectType, List
 from graphene_django import DjangoObjectType
+from .models import Project, Task
 
-class Projects(DjangoObjectType):
+class ProjectType(DjangoObjectType):
     class Meta:
         model = Project    
 
-class Query(graphene.ObjectType):
-    projects = graphene.List(Projects)
+class TaskType(DjangoObjectType):
+    class Meta:
+        model = Task   
 
-    def resolve_projects(self, info):
+class Query(ObjectType):
+    projects = List(ProjectType)
+    tasks = List(TaskType)
+
+    def resolve_projects(self, info, **kwargs):
         return Project.objects.all()
-
-schema = graphene.Schema(query=Query)
+    
+    def resolve_tasks(self, info, **kwargs):
+        return Task.objects.select_related().all()
+    

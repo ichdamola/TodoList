@@ -13,8 +13,8 @@ class Project(models.Model):
         return '%s' % self.name
 
 class Task(models.Model):
-    project = models.ForeignKey('Project', on_delete=models.CASCADE)
-    parent_tasks = models.ForeignKey('Task', null=True, blank=True, on_delete=models.CASCADE)
+    project = models.ForeignKey('Project', on_delete=models.CASCADE, related_name='tasks')
+    parent_tasks = models.ForeignKey('Task', null=True, blank=True, on_delete=models.CASCADE, related_name='child_tasks')
     name = models.CharField(max_length=100)
     text = models.TextField()
     status = models.BooleanField(default=True)
