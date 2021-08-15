@@ -6,8 +6,8 @@ from datetime import datetime
 class Project(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created = models.DateTimeField(default=datetime.now)
-    updated = models.DateTimeField(default=datetime.now)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return '%s' % self.name
@@ -20,8 +20,8 @@ class Task(models.Model):
     status = models.BooleanField(default=True)
     archived = models.BooleanField(default=False)
 
-    created = models.DateTimeField()
-    updated = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return '%s' % self.name
