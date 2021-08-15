@@ -16,19 +16,19 @@ This API allows a user to perform the following functionalities:
 3. Activate env
 ```source env/bin/activate```
 4. Setup django secret_key
-```touch .env``` 
+-```touch .env``` 
 - Copy the SECRET_KEY from [```secret_key.txt```](https://github.com/ichdamola/TodoList/blob/main/secret_key.txt) file in the root folder,
 - paste it into the ```.env``` file in the format: 
 - ```SECRET_KEY=<'the key'>```.
-6. Install dependencies
+5. Install dependencies
 ```python install -r requirements.py```
-5. Commit model to ORM
+6. Commit model to ORM
 ```python manage.py makemigrations```
-6. Migrate model to db
+7. Migrate model to db
 ```python manage.py migrate```
-7. Start app server
+8. Start app server
 ```python manage.py runserver```
-6. GraphQL link
+9. GraphQL link
 ```localhost:8000/graphql```
 ### Accessing Admin panel
 1. Browse url
