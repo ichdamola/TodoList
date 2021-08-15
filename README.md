@@ -10,7 +10,8 @@ This API allows a user to perform the following functionalities:
 ## Test queries
 ### Create Task -> pattern
 
-```mutation myTaskMutation {
+```json
+mutation myTaskMutation {
     createTask(name: <"test task">, text: <"test task body">, projectid: <id>) {
         task {
           id,
@@ -18,31 +19,38 @@ This API allows a user to perform the following functionalities:
         }
     ok
     }
-}```
+}
+```
 
 ### Delete a Task -> query pattern
-`mutation myTaskMutation {
+```json
+mutation myTaskMutation {
     deleteTask(id: <id>) {
     ok
     }
-}`
+}
+```
 
 ### Search text -> query pattern
 
-`query {
+```json
+query {
   tasks(search: <"text to be search">){
     id,
     name
   }
-}`
+}
+```
 
 
 ### Fetch all items -> query pattern
 
-`query {
+```
+query {
   tasks(search: <"text to be search">){
     id,
     name
   }
-}`
+}
+```
 
