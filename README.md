@@ -41,6 +41,15 @@ This API allows a user to perform the following functionalities:
 
 
 ## Test queries
+### Create Project -> pattern
+
+```json
+mutation myProjectMutation {
+    createProject(name: "hit the gym"){
+    ok
+  }  
+}
+```
 ### Create Task -> pattern
 
 ```json
