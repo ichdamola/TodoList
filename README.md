@@ -17,7 +17,11 @@ This API allows a user to perform the following functionalities:
 ```source env/bin/activate```
 4. Install dependencies
 ```python install -r requirements.py```
-5. Start app server
+5. Commit model to ORM
+```python manage.py makemigrations```
+6. Migrate model to db
+```python manage.py migrate```
+7. Start app server
 ```python manage.py runserver```
 6. GraphQL link
 ```localhost:8000/graphql```
@@ -27,6 +31,8 @@ This API allows a user to perform the following functionalities:
 2. Login
 ```username: damola```
 ```password: p@55w@rd```
+### Create login to admin(if login didnt work!)
+```python manage.py createsupersuer```
 
 
 ## Test queries
@@ -69,7 +75,7 @@ query {
 
 ```
 query {
-  tasks(search: <"text to be search">){
+  projects{
     id,
     name
   }
