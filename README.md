@@ -16,7 +16,7 @@ This API allows a user to perform the following functionalities:
 3. Activate env
 ```source env/bin/activate```
 4. Setup django secret_key
-- ```touch .env``` at the folder
+- ```touch .env``` at the root folder
 - copy the SECRET_KEY from [```secret_key.txt```](https://github.com/ichdamola/TodoList/blob/main/secret_key.txt) file in the root folder,
 - paste it into the ```.env``` file in the format: 
 - ```SECRET_KEY=<'the key'>```.
