@@ -13,6 +13,7 @@ class TaskType(DjangoObjectType):
     class Meta:
         model = Task   
 
+# Create a Project
 class CreateProject(Mutation):
     class Arguments:
         name = String()
@@ -26,6 +27,7 @@ class CreateProject(Mutation):
         ok = True
         return CreateProject(project=project, ok=ok)
 
+# Create a Task
 class CreateTask(Mutation):
     class Arguments:
         name = String(required=True)
@@ -41,6 +43,7 @@ class CreateTask(Mutation):
         ok = True
         return CreateTask(task=task, ok=ok)
 
+# Delete a Project
 class DeleteProject(Mutation):
     class Arguments:
         id = ID()
@@ -54,6 +57,7 @@ class DeleteProject(Mutation):
         ok=True
         return DeleteProject(project=project, ok=ok)
 
+# Delete a Task
 class DeleteTask(Mutation):
     class Arguments:
         id = ID()
@@ -65,29 +69,17 @@ class DeleteTask(Mutation):
         user = info.context.user
         task = Task.objects.get(id=id)
 
-        # if user.is_anonymous:
-        #     raise GraphQLError("user must logged in to update a task.")
-
         task.delete()
         ok=True
         return DeleteTask(task=task, ok=ok)
 
-
-# class Query(ObjectType):
-#     projects = List(ProjectType)
-#     tasks = List(TaskType)
-
-#     def resolve_projects(self, info, **kwargs):
-#         return Project.objects.all()
-    
-#     def resolve_tasks(self, info, **kwargs):
-#         return Task.objects.select_related().all()
-
+# Queries pattern (Search)
 class Query(ObjectType):
     tasks = List(TaskType, search=String())
+    projects = List(ProjectType, search=String())
 
+    # Search the list of tasks for a text/word
     def resolve_tasks(self, info, search=None):
-        print(search)
         if search:
             filtered = (
                 Q(name__contains=search) |
@@ -96,4 +88,15 @@ class Query(ObjectType):
             return Task.objects.filter(filtered)
 
         return Task.objects.all()
+
+    # Search the list of projects for a text/word
+    def resolve_projects(self, info, search=None):
+        if search:
+            filtered = (
+                Q(user__contains=search) |
+                Q(name__contains=search) 
+            )
+            return Project.objects.filter(filtered)
+
+        return Project.objects.all()
     
