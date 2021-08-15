@@ -7,6 +7,28 @@ This API allows a user to perform the following functionalities:
 - Delete an item from the todo list.
 - Search the list of items in the todo list that contain a search text.
 
+# Project Setup Locally
+1. Clone repo
+```git clone git clone https://github.com/ichdamola/TodoList.git```
+2. Create virtual environment
+```cd TodoList```
+```virtualenv env```
+3. Activate env
+```source env/bin/activate```
+4. Install dependencies
+```python install -r requirements.py```
+5. Start app server
+```python manage.py runserver```
+6. GraphQL link
+```localhost:8000/graphql```
+### Accessing Admin panel
+1. Browse url
+```localhost:8000/admin```
+2. Login
+- username: damola
+- password: p@55w@rd
+
+
 ## Test queries
 ### Create Task -> pattern
 
