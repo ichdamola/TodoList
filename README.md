@@ -15,7 +15,10 @@ This API allows a user to perform the following functionalities:
 ```virtualenv env```
 3. Activate env
 ```source env/bin/activate```
-4. Install dependencies
+4. Setup django secret_key
+```touch .env``` 
+- Copy the SECRET_KEY from ```secret_key.txt``` file in the root folder, and paste it into the ```.env``` file in the format: ```SECRET_KEY=<'the key'>```.
+6. Install dependencies
 ```python install -r requirements.py```
 5. Commit model to ORM
 ```python manage.py makemigrations```
