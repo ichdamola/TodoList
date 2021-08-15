@@ -25,8 +25,8 @@ This API allows a user to perform the following functionalities:
 1. Browse url
 ```localhost:8000/admin```
 2. Login
-- username: damola
-- password: p@55w@rd
+```username: damola```
+```password: p@55w@rd```
 
 
 ## Test queries
